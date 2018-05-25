@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.SpringCrud.URL.URLMapping;
@@ -26,8 +27,6 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService;
 	
-	
-	
 	/**
 	 * Creates the student.
 	 *
@@ -39,6 +38,56 @@ public class StudentController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		try{
 			result.putAll(studentService.createStudent(student));
+			return ResponseHandler.generateResponse(HttpStatus.OK, false, "success", result);
+		}catch(Exception exception){
+			return ResponseHandler.generateResponse(HttpStatus.INTERNAL_SERVER_ERROR, true, "error", result);
+		}
+	}
+	
+	/**
+	 * Update student.
+	 *
+	 * @param student the student
+	 * @return the map
+	 */
+	@RequestMapping(value = URLMapping.UPDATE_STUDENT , method = RequestMethod.PUT)
+	public Map<String, Object> updateStudent(@RequestBody Student student){
+		Map<String, Object> result = new HashMap<String, Object>();
+		try{
+			result.putAll(studentService.updateStudent(student));
+			return ResponseHandler.generateResponse(HttpStatus.OK, false, "success", result);
+		}catch(Exception exception){
+			return ResponseHandler.generateResponse(HttpStatus.INTERNAL_SERVER_ERROR, true, "error", result);
+		}
+	}
+	
+	/**
+	 * Delete student.
+	 *
+	 * @param studentId the student id
+	 * @return the map
+	 */
+	@RequestMapping(value = URLMapping.DELETE_STUDENT , method = RequestMethod.DELETE)
+	public Map<String, Object> deleteStudent(@RequestParam("studentId") String studentId){
+		Map<String, Object> result = new HashMap<String, Object>();
+		try{
+			result.putAll(studentService.deleteStudent(studentId));
+			return ResponseHandler.generateResponse(HttpStatus.OK, false, "success", result);
+		}catch(Exception exception){
+			return ResponseHandler.generateResponse(HttpStatus.INTERNAL_SERVER_ERROR, true, "error", result);
+		}
+	}
+	
+	/**
+	 * Find all student.
+	 *
+	 * @return the map
+	 */
+	@RequestMapping(value = URLMapping.FIND_ALL_STUDENT , method = RequestMethod.GET)
+	public Map<String, Object> findAllStudent(){
+		Map<String, Object> result = new HashMap<String, Object>();
+		try{
+			result.putAll(studentService.findAllStudent());
 			return ResponseHandler.generateResponse(HttpStatus.OK, false, "success", result);
 		}catch(Exception exception){
 			return ResponseHandler.generateResponse(HttpStatus.INTERNAL_SERVER_ERROR, true, "error", result);
