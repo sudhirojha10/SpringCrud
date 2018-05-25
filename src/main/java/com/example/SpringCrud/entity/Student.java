@@ -54,6 +54,10 @@ public class Student {
 	/** The mobile number. */
 	private Long mobileNumber;
 	
+	/** The joining date. */
+	@Column(updatable = false)
+	private Long joiningDate;
+	
 	/**
 	 * Gets the student id.
 	 *
@@ -250,5 +254,23 @@ public class Student {
 	 */
 	public void setMobileNumber(Long mobileNumber) {
 		this.mobileNumber = mobileNumber;
+	}
+
+	/**
+	 * Gets the joining date.
+	 *
+	 * @return the joining date
+	 */
+	public Long getJoiningDate() {
+		return joiningDate;
+	}
+
+	/**
+	 * Sets the joining date.
+	 *
+	 * @param joiningDate the new joining date
+	 */
+	public void setJoiningDate(Long joiningDate) {
+		this.joiningDate = joiningDate;
 	}
 }
