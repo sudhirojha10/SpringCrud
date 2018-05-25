@@ -6,8 +6,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.SpringCrud.URL.URLMapping;
 import com.example.SpringCrud.entity.Student;
 import com.example.SpringCrud.service.StudentService;
 import com.example.SpringCrud.util.ResponseHandler;
@@ -23,12 +26,15 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService;
 	
+	
+	
 	/**
 	 * Creates the student.
 	 *
 	 * @param student the student
 	 * @return the map
 	 */
+	@RequestMapping(value = URLMapping.CREATE_STUDENT , method = RequestMethod.POST)
 	public Map<String, Object> createStudent(@RequestBody Student student){
 		Map<String, Object> result = new HashMap<String, Object>();
 		try{
