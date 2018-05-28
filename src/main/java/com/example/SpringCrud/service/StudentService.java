@@ -115,4 +115,22 @@ public class StudentService {
 		}
 		return result;
 	}
+	
+	/**
+	 * Find one student.
+	 *
+	 * @param studentId the student id
+	 * @return the map
+	 */
+	public Map<String, Object> findOneStudent(String studentId){
+		Map<String, Object> result = new HashMap<String, Object>();
+		try{
+			Student student = studentRepository.findStudentByStudentId(Long.parseLong(studentId));
+			result.put("student", student);
+		}catch(Exception exception){
+			result.put("responseMessage", "error");
+			result.put("errorMessage", "Something went wrong plase try after sometimes.");
+		}
+		return result;
+	}
 }

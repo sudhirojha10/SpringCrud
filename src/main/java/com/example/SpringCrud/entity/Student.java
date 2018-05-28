@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -20,15 +19,12 @@ public class Student {
 	private Long studentId;
 	
 	/** The first name. */
-	@NotNull(message="firstName is required.")
 	private String firstName;
 	
 	/** The Last name. */
-	@NotNull(message="lastName is required.")
 	private String LastName;
 	
 	/** The father name. */
-	@NotNull(message="fatherName is required.")
 	private String fatherName;
 	
 	/** The mother name. */
@@ -48,7 +44,6 @@ public class Student {
 	
 	/** The email. */
 	@Column(unique = true)
-	@NotNull(message="Email is required.")
 	private String email;
 	
 	/** The mobile number. */

@@ -93,4 +93,27 @@ public class StudentController {
 			return ResponseHandler.generateResponse(HttpStatus.INTERNAL_SERVER_ERROR, true, "error", result);
 		}
 	}
+	
+	/**
+	 * Find one student.
+	 *
+	 * @param studentId the student id
+	 * @return the map
+	 */
+	@RequestMapping(value = URLMapping.FIND_ONE_STUDENT , method = RequestMethod.GET)
+	public Map<String, Object> findOneStudent(@RequestParam("studentId") String studentId){
+		Map<String, Object> result = new HashMap<String, Object>();
+		try{
+			if(studentId != null){
+				result.putAll(studentService.findOneStudent(studentId));
+			}else{
+				result.put("responseMessage", "error");
+				result.put("errorMessage", "studentId can't be null.");
+			}
+			return ResponseHandler.generateResponse(HttpStatus.OK, false, "success", result);
+		}catch(Exception exception){
+			exception.printStackTrace();
+			return ResponseHandler.generateResponse(HttpStatus.INTERNAL_SERVER_ERROR, true, "error", result);
+		}
+	}
 }

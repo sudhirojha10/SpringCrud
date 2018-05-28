@@ -17,4 +17,7 @@ public class URLMapping {
 	
 	/** The Constant FIND_ALL_STUDENT. */
 	public static final String FIND_ALL_STUDENT = "api/v1/findAllStudent";
+	
+	/** The Constant FIND_ONE_STUDENT. */
+	public static final String FIND_ONE_STUDENT = "api/v1/findOneStudent";
 }
